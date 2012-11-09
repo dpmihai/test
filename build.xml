@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+
+<!-- ===================================================================
+Build file for 'stresser' application
+
+Most useful targets:
+
+  - compile -> compile all java sources
+  - jar     -> creates the application's jar file
+  - docapi -> creates the javadocs
+  - clean   -> removes all the generated files and directories
+  - dist    -> creates the distribution
+
+Authors:
+  Decebal Suiu <decebal.suiu@asf.ro>
+
+Copyright:
+  Copyright (c) 2004, The ASF team. All rights reserved.
+==================================================================== -->
+
+<project name="db" default="compile" basedir=".">
+    
+	<property file="local.properties"/>	
+	<property file="build.properties"/>	
+	
+	<path id="classpath">
+		<fileset dir="${app.libext}/" includes="*.jar"/>
+	</path>
+	
+	<target name="init">
+        <!--    Create the time stamp    -->
+		<tstamp/>
+	</target>
+
+    <target name="buildnumber" depends="init">
+        <!--     Track build number   -->
+        <buildnumber file="build.number"/>
+    </target>
+	
+	<target name="compile" depends="init">
+        <!--    Create the ${app.classes} directory    -->
+		<mkdir dir="${app.classes}"/>
+        <!--    Compile the java code from ${app.src} into ${app.classes}    -->
+		<javac srcdir="${app.src}" 
+		       destdir="${app.classes}"
+			   debug="${javac.debug}"
+			   verbose="${javac.verbose}"
+			   deprecation="${javac.deprecation}"			   
+			   classpathref="classpath"/>
+	</target>
+	
+	<target name="jar" depends="compile">
+		<delete file="${app.jar}"/>
+		
+        <!--    Call manifest target     -->
+        <antcall target="manifest"></antcall>
+		
+        <!--    Create jar file    -->
+		<jar jarfile="${app.jar}" compress="false" manifest="${app.target}/MANIFEST.MF">
+			<fileset dir="${app.classes}"  includes="*/**"/>
+			<fileset dir=".." includes="version"/>
+			<fileset dir="." includes="build.number"/>
+			<fileset dir="${app.src}">
+				<include name="**/*.gif"/>
+				<include name="**/*.png"/>
+				<include name="**/*.jpg"/>
+			</fileset>
+			<fileset dir="${app.config}">
+				<include name="log4j.xml"/>
+			</fileset>			
+		</jar>
+	</target>
+
+	<target name="manifest" depends="init">
+        <!--    Create the ${app.target} directory    -->
+		<mkdir dir="${app.target}"/>
+	
+		<delete file="${app.target}/MANIFEST.MF"/>
+		
+		<!--	Copy ${app.config}/MANIFEST.MF file to "${app.target}"    -->
+		<copy file="${app.config}/MANIFEST.MF" todir="${app.target}"/>
+	</target>
+	
+	<target name="starter">
+        <!--    Create the ${app.target} directory    -->
+		<mkdir dir="${app.target}"/>
+
+		<!--    Windows starter    -->
+		<delete file="${app.target}/run.bat"/>
+		<copy file="${app.config}/run.bat" todir="${app.target}"/>
+		<replace file="${app.target}/run.bat">
+			<replacefilter token="@APPNAME@" value="${app.name}"/>
+		</replace>
+		
+<!--		<delete file="${app.target}/run.sh"/>-->
+<!--		<copy file="${app.config}/run.sh" todir="${app.target}"/>-->
+<!--		<replace file="${app.target}/run.sh">-->
+<!--			<replacefilter token="@APPNAME@" value="${app.name}"/>-->
+<!--		</replace>-->
+	</target>
+	
+	<target name="dist" depends="init">
+        <!--    Call clean target     -->
+        <antcall target="clean"></antcall>
+
+        <!--    Call jar target     -->
+        <antcall target="jar"></antcall>
+		
+        <!--    Create the ${re.dist} directory    -->
+		<mkdir dir="${app.dist}"/>
+		
+		<!--	Copy all needed files from ${re} to ${re.dist}    -->
+		<copy todir="${app.dist.config}">
+			<fileset dir="${app.config}" includes="*.properties"/>
+			<fileset dir="${app.config}" includes="*.dtd"/>
+			<fileset dir="${app.config}" includes="*.xml"/>
+		</copy>
+
+        <!--    Create the ${re.dist.lib} directory    -->
+		<mkdir dir="${app.dist.lib}"/>
+		
+		<!--	Copy all jar files from ${app.lib} to ${app.dist.lib}    -->
+		<copy todir="${app.dist.lib}">
+			<fileset dir="${app.libext}" includes="*.jar"/>
+		</copy>
+		
+		<!--	Copy ${app.jar} file to ${app.dist.lib}    -->
+		<copy file="${app.jar}" todir="${app.dist.lib}"/>
+
+        <!--    Copy all file form ${app.config} to ${app.dist.config}    -->
+		<copy todir="${app.dist.config}">
+			<fileset dir="${app.config}" excludes="MANIFEST.MF,*.bat,*.sh,log4j.xml"/>
+		</copy>
+		
+        <!--    Create the ${app.dist.log} directory    -->
+		<mkdir dir="${app.dist.log}"/>
+		
+		<mkdir dir="${app.dist}/task-lib"/>
+		
+        <!--    Call starter target     -->
+        <antcall target="starter"></antcall>
+		<copy todir="${app.dist}">
+			<fileset dir="${app.config}" includes="*.xsl"/>
+		</copy>
+		<copy file="${app.target}/run.bat" todir="${app.dist}"/>
+<!--		<copy file="${app.target}/run.sh" todir="${app.dist}"/>-->
+<!--        <chmod file="${app.dist}/run.sh" perm="700"/>-->
+	</target>
+	
+	<target name="deploy">
+        <!--    Call dist target     -->
+        <antcall target="dist"></antcall>
+	</target>
+	          
+	<target name="clean">
+		<delete dir="${app.target}"/>
+		<delete dir="${app.dist}"/>
+    </target>
+		
+    <target name="run">
+        <exec executable="${app.dist}/run.bat" dir="${app.dist}" >
+        </exec>
+    </target>
+
+</project>
