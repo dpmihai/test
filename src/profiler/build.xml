@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+
+
+<project name="agent" default="jar" basedir=".">
+
+    <property name="src" value="."/>
+    <property name="build" value="build"/>
+    <property name="config" value="config"/>
+    <property name="META-INF" value="${build}/META-INF"/>
+    <property name="agent.jar" value="agent.jar"/>
+    <property name="run.bat" value="run.bat"/>
+
+    <path id="dependency">
+        <pathelement location="../../lib/asm-2.0.jar"/>
+        <pathelement location="${build}"/>
+        <pathelement path="${java.class.path}"/>
+    </path>
+
+    <target name="init">
+        <mkdir dir="${build}"/>
+    </target>
+
+    <!-- Deploy manifest file -->
+    <target name="manifest" depends="init">
+        <mkdir dir="${META-INF}"/>
+        <delete file="${META-INF}/MANIFEST.MF"/>
+        <copy file="${config}/MANIFEST.MF" todir="${META-INF}"/>
+    </target>
+
+    <!-- Compile the java code -->
+    <target name="compile" depends="manifest">
+        <javac srcdir="${src}" destdir="${build}" fork="true">
+            <classpath refid="dependency"/>
+        </javac>
+    </target>
+
+    <!--    Create jar file    -->
+    <target name="jar" depends="compile">
+        <delete file="${agent.jar}"/>
+        <jar jarfile="${agent.jar}" compress="false" manifest="${META-INF}/MANIFEST.MF">
+            <fileset dir="${build}" includes="*/**" excludes="profiler/test/**"/>
+            <fileset dir=".." includes="version"/>
+            <fileset dir="." includes="build.number"/>
+            <fileset dir="${src}">
+                <include name="**/*.gif"/>
+                <include name="**/*.png"/>
+                <include name="**/*.jpg"/>
+            </fileset>
+            <fileset dir="${config}">
+                <include name="log4j.xml"/>
+            </fileset>
+        </jar>
+    </target>
+
+    <target name="run" depends="jar">
+        <exec executable="${run.bat}" >
+        </exec>
+    </target>
+
+</project>

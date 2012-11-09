@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+
+<project name="antlr" default="antlr" basedir=".">
+
+    <property name="file" value="t.g"/>
+    <property name="src" value="."/>
+    <property name="build" value="../../classes"/>
+
+    <path id="dependency">
+        <pathelement location="../../lib/antlr-2.7.5.jar"/>
+        <pathelement location="${build}"/>
+        <pathelement path="${java.class.path}"/>
+    </path>
+
+    <target name="antlr">
+        <java classname="antlr.Tool">
+             <arg value="${file}"/>
+            <classpath refid="dependency"/>
+        </java>
+    </target>
+
+    <target name="compile" depends="antlr">
+        <javac srcdir="${src}" destdir="${build}" fork="true">
+            <classpath refid="dependency"/>
+        </javac>
+    </target>
+
+    <!-- Note that in Ant 1.6, any attempt to read input in the forked VM
+    will receive an EOF (-1). 
+    This is a change from Ant 1.5, where such an attempt would block.-->
+    <target name="run" depends="compile">
+        <java classname="antlr.Main" fork="yes" >
+            <classpath refid="dependency"/>
+        </java>
+    </target>
+
+</project>

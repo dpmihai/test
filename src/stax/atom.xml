@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+ <title>Simple Atom Feed File</title>
+ <subtitle>Using STAX to read feed files</subtitle>
+ <link href="http://example.org/"/>
+ <updated>2006-01-01T18:30:02Z</updated>
+ 
+ <author>
+   <name>Feed Author</name>
+   <email>doofus@feed.com</email>
+ </author>
+
+ <entry>
+   <title>STAX parsing is simple</title>
+   <link href="http://www.devx.com"/>
+   <updated>2006-01-01T18:30:02Z</updated>
+   <summary>Lean how to use STAX</summary>
+ </entry>
+
+</feed>

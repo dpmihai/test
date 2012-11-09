@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+
+<project name="test-junit" default="run-tests" basedir=".">
+
+    <property name="src" value="."/>
+    <property name="build" value="../../classes/"/>
+    <property name="test.dir" value="."/>
+
+    <path id="dependency">
+        <pathelement location="${build}"/>
+        <pathelement path="${java.class.path}"/>
+    </path>
+
+    <target name="compile">
+        <javac srcdir="${src}" destdir="${build}" fork="true">
+            <classpath refid="dependency"/>
+        </javac>
+    </target>
+
+
+    <target name="run-tests" depends="compile">
+        <junit printsummary="yes" fork="true" haltonfailure="yes">
+            <classpath refid="dependency"/>
+            <formatter type="xml"/>
+
+            <!-- individual tests -->
+            <!-- to run individual test we use : -->
+            <!-- ant test -Dtestcase=<fully qualified classname>-->
+            <test name="${testcase}" todir="${test.dir}" if="testcase"/>
+
+            <!-- all tests -->
+            <batchtest haltonfailure="no" todir="${test.dir}">
+                <fileset dir="${test.dir}/..">
+                    <include name="junit/*Test*.java"/>
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+    <target name="clean">
+        <delete>
+            <fileset dir="." includes="**/*Test*.xml"/>
+        </delete>
+    </target>
+
+
+</project>

@@ -1,0 +1,24 @@
+<project name="capone-clients" basedir=".">
+
+<target name="jar">
+		<delete file="test.jar"/>
+
+        <!--    Create jar file    -->
+        <mkdir dir="artifact"/>
+
+        <copy file="META-INF/application-client.xml" tofile="artifact/META-INF/application-client.xml" />
+        <copy todir="artifact">
+            <fileset dir="../classes/test"/>
+        </copy>
+        <jar jarfile="test.jar" basedir="artifact" manifest="MANIFEST.MF">
+        </jar>
+
+	</target>
+    <target name="sign" depends="jar">
+		<signjar keystore="CAPONEStore" alias="capone" storepass="capone">
+			<fileset dir="." includes="*.jar"/>
+		</signjar>
+
+	</target>
+
+ </project>

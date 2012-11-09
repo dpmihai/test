@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<servers>
+    <server>
+        <name>Test</name>
+        <ip>192.123.14.3</ip>
+        <port>1023</port>
+    </server>
+    <server>
+        <name>Prod</name>
+        <ip>192.123.14.87</ip>
+        <port>1024</port>
+    </server>
+</servers>

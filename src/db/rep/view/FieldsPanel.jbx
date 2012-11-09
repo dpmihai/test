@@ -1,0 +1,14 @@
+[PropertyInfo]
+btnAdd,javax.swing.JButton,false,false, , ,false,<default>
+dbFieldsModel,com.fort.dbrep.table.FieldsTableModel,false,false, , ,false,<default>
+fields,java.util.List,false,false, , ,false,<default>
+fieldsPane,javax.swing.JScrollPane,false,false, , ,false,<default>
+fieldsTable,com.fort.dbrep.table.BaseTable,false,false, , ,false,<default>
+gridBagLayout1,java.awt.GridBagLayout,false,false, , ,false,<default>
+gridBagLayout2,java.awt.GridBagLayout,false,false, , ,false,<default>
+pneButtons,javax.swing.JPanel,false,false, , ,false,<default>
+[IconNames]
+
+
+
+

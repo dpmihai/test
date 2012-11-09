@@ -1,0 +1,25 @@
+<project default="testng">
+
+    <property name="src" value="."/>
+    <property name="build" value="../../classes/"/>
+
+    <path id="cp">
+        <pathelement location="${build}"/>
+        <pathelement path="${java.class.path}"/>
+    </path>
+
+    <target name="compile">
+        <javac srcdir="${src}" destdir="${build}" fork="true">
+            <classpath refid="cp"/>
+        </javac>
+    </target>
+
+    <taskdef name="testng" classpathref="cp" classname="org.testng.TestNGAntTask"/>
+
+    <target name="testng" depends="compile">
+        <testng classpathref="cp" groups="fast, init">
+            <classfileset dir="${build}" includes="testng/*.class"/>
+        </testng>
+    </target>
+
+</project>

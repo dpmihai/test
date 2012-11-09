@@ -1,0 +1,1 @@
+java -javaagent:agent.jar -cp ./;../../classes profiler.test.Test

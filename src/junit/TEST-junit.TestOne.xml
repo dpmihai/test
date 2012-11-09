@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" name="junit.TestOne" tests="2" time="0.344">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"></property>
+    <property name="sun.boot.library.path" value="E:\Jdk\jdk1.6.0_02\jre\bin"></property>
+    <property name="java.vm.version" value="1.6.0_02-b05"></property>
+    <property name="ant.library.dir" value="E:\IntelliJ IDEA 6.0\lib\ant\lib"></property>
+    <property name="ant.version" value="Apache Ant version 1.6.5 compiled on June 2 2005"></property>
+    <property name="ant.java.version" value="1.5"></property>
+    <property name="java.vm.vendor" value="Sun Microsystems Inc."></property>
+    <property name="java.vendor.url" value="http://java.sun.com/"></property>
+    <property name="path.separator" value=";"></property>
+    <property name="java.vm.name" value="Java HotSpot(TM) Client VM"></property>
+    <property name="file.encoding.pkg" value="sun.io"></property>
+    <property name="user.country" value="US"></property>
+    <property name="sun.java.launcher" value="SUN_STANDARD"></property>
+    <property name="sun.os.patch.level" value="Service Pack 2"></property>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"></property>
+    <property name="user.dir" value="E:\Public\test\src\junit"></property>
+    <property name="java.runtime.version" value="1.6.0_02-b05"></property>
+    <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"></property>
+    <property name="basedir" value="E:\Public\test\src\junit"></property>
+    <property name="java.endorsed.dirs" value="E:\Jdk\jdk1.6.0_02\jre\lib\endorsed"></property>
+    <property name="os.arch" value="x86"></property>
+    <property name="java.io.tmpdir" value="C:\DOCUME~1\MIHAI~1.PAN\LOCALS~1\Temp\"></property>
+    <property name="line.separator" value="
+"></property>
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc."></property>
+    <property name="user.variant" value=""></property>
+    <property name="os.name" value="Windows XP"></property>
+    <property name="ant.home" value="E:\IntelliJ IDEA 6.0\lib\ant"></property>
+    <property name="ant.project.name" value="test-junit"></property>
+    <property name="ant.file.test-junit" value="E:\Public\test\src\junit\build.xml"></property>
+    <property name="sun.jnu.encoding" value="Cp1252"></property>
+    <property name="java.library.path" value="E:\Jdk\jdk1.6.0_02\jre\bin;.;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Tcl\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Program Files\cvsnt;C:\Program Files\Sudowin\Clients\Console;E:\apache-ant-1.6.5\bin;E:\Jdk\jdk1.6.0\bin;C:\Program Files\QuickTime\QTSystem\"></property>
+    <property name="src" value="."></property>
+    <property name="java.specification.name" value="Java Platform API Specification"></property>
+    <property name="java.class.version" value="50.0"></property>
+    <property name="sun.management.compiler" value="HotSpot Client Compiler"></property>
+    <property name="os.version" value="5.1"></property>
+    <property name="ant.file" value="E:\Public\test\src\junit\build.xml"></property>
+    <property name="user.home" value="C:\Documents and Settings\mihai.panaitescu"></property>
+    <property name="user.timezone" value=""></property>
+    <property name="java.awt.printerjob" value="sun.awt.windows.WPrinterJob"></property>
+    <property name="file.encoding" value="Cp1252"></property>
+    <property name="java.specification.version" value="1.6"></property>
+    <property name="java.class.path" value="E:\Public\test\classes;E:\Public\test\lib\junit-4.1.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-antlr.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-apache-bcel.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-apache-bsf.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-apache-log4j.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-apache-oro.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-apache-regexp.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-apache-resolver.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-commons-logging.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-commons-net.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-icontract.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-jai.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-javamail.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-jdepend.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-jmf.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-jsch.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-junit.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-launcher.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-netrexx.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-nodeps.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-starteam.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-stylebook.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-swing.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-trax.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-vaj.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-weblogic.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-xalan1.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant-xslp.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\ant.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\xercesImpl.jar;E:\IntelliJ IDEA 6.0\lib\ant\lib\xml-apis.jar;E:\Jdk\jdk1.6.0_02\lib\tools.jar;E:\IntelliJ IDEA 6.0\lib\idea_rt.jar;E:\Public\test\src\junit;E:\Jdk;C:\Program Files\Java\jre1.6.0_02\lib\ext\QTJava.zip"></property>
+    <property name="user.name" value="mihai.panaitescu"></property>
+    <property name="java.vm.specification.version" value="1.0"></property>
+    <property name="java.home" value="E:\Jdk\jdk1.6.0_02\jre"></property>
+    <property name="sun.arch.data.model" value="32"></property>
+    <property name="user.language" value="en"></property>
+    <property name="java.specification.vendor" value="Sun Microsystems Inc."></property>
+    <property name="build" value="../../classes/"></property>
+    <property name="awt.toolkit" value="sun.awt.windows.WToolkit"></property>
+    <property name="test.dir" value="."></property>
+    <property name="java.vm.info" value="mixed mode, sharing"></property>
+    <property name="java.version" value="1.6.0_02"></property>
+    <property name="java.ext.dirs" value="E:\Jdk\jdk1.6.0_02\jre\lib\ext;C:\WINDOWS\Sun\Java\lib\ext"></property>
+    <property name="sun.boot.class.path" value="E:\Jdk\jdk1.6.0_02\jre\lib\resources.jar;E:\Jdk\jdk1.6.0_02\jre\lib\rt.jar;E:\Jdk\jdk1.6.0_02\jre\lib\sunrsasign.jar;E:\Jdk\jdk1.6.0_02\jre\lib\jsse.jar;E:\Jdk\jdk1.6.0_02\jre\lib\jce.jar;E:\Jdk\jdk1.6.0_02\jre\lib\charsets.jar;E:\Jdk\jdk1.6.0_02\jre\classes"></property>
+    <property name="java.vendor" value="Sun Microsystems Inc."></property>
+    <property name="file.separator" value="\"></property>
+    <property name="java.vendor.url.bug" value="http://java.sun.com/cgi-bin/bugreport.cgi"></property>
+    <property name="sun.cpu.endian" value="little"></property>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"></property>
+    <property name="sun.desktop" value="windows"></property>
+    <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"></property>
+  </properties>
+  <testcase classname="junit.framework.JUnit4TestCaseFacade" name="unknown" time="0.015"></testcase>
+  <testcase classname="junit.framework.JUnit4TestCaseFacade" name="unknown" time="0.016"></testcase>
+  <system-out><![CDATA[Init tests ...
+1 : 'invoke0' started at : Mon Oct 15 12:12:40 EEST 2007
+	sum = 50005000
+1 : 'invoke0' ended at : Mon Oct 15 12:12:40 EEST 2007
+2 : 'invoke0' started at : Mon Oct 15 12:12:40 EEST 2007
+Finish.
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

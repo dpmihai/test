@@ -1,0 +1,37 @@
+<project name="oc4jtest" basedir=".">
+
+
+    <target name="compile">
+        <!--    Compile the java code from ${app.src} into ${app.classes}    -->
+        <javac srcdir=".."
+               destdir="../../classes"
+               debug="true"
+               verbose="true"
+               deprecation="true"
+                />
+    </target>
+
+    <target name="jar" depends="compile">
+        <delete file="test.jar"/>
+
+        <!--    Create jar file    -->
+        <mkdir dir="artifact"/>
+
+        <copy file="META-INF/application-client.xml" tofile="artifact/META-INF/application-client.xml"/>
+        <copy todir="artifact/oc4jtest">
+            <fileset dir="../../classes/oc4jtest"/>
+        </copy>
+        <jar jarfile="test.jar" basedir="artifact" manifest="MANIFEST.MF">
+        </jar>
+
+    </target>
+
+
+    <target name="sign" depends="jar">
+        <signjar keystore="CAPONEStore" alias="capone" storepass="capone">
+            <fileset dir="." includes="*.jar"/>
+        </signjar>
+
+    </target>
+
+</project>
