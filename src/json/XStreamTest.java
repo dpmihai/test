@@ -15,6 +15,7 @@ public class XStreamTest {
 
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("Client", "Popescu");
+        map.put("id", 2031);
         map.put("Project", new Object[] {"Anytime CRM", "Anytime Sales"});
         map.put("Date", new Date());
                 
