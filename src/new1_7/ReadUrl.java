@@ -14,7 +14,7 @@ public class ReadUrl {
 		System.setProperty("http.proxyHost", "192.168.16.7");
 		System.setProperty("http.proxyPort", "128");
 				
-		try (InputStream in = URI.create("http://ste.hwg.cz/values.xml").toURL().openStream()) {
+		try (InputStream in = URI.create("http://www.bnro.ro/nbrfxrates.xml").toURL().openStream()) {
 	        Files.copy(in, Paths.get("D:/values.xml"));
 	    }
 	}
