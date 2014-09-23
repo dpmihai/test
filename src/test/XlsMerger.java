@@ -38,11 +38,11 @@ public class XlsMerger {
         List<InputStream> list = new ArrayList<InputStream>();
         try {
             // Source
-            list.add(new FileInputStream(new File("E:\\Public\\test\\1.xls")));
-            list.add(new FileInputStream(new File("E:\\Public\\test\\2.xls")));
+            list.add(new FileInputStream(new File("D:\\Public\\test\\1.xls")));
+            list.add(new FileInputStream(new File("D:\\Public\\test\\2.xls")));
 
             // Resulting
-            OutputStream out = new FileOutputStream(new File("E:\\Public\\test\\merge.xls"));
+            OutputStream out = new FileOutputStream(new File("D:\\Public\\test\\merge.xls"));
 
             merger.doMerge(list, out);
 

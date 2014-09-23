@@ -29,20 +29,24 @@ public class Test {
 	
 	public static void main(String[] args) throws Exception {
 						
-		String file= "E:\\Public\\next-reports\\jssecacerts";
+//		String file= "D:\\Public\\next-reports\\jssecacerts";
+		String file = "C:\\Users\\mihai.panaitescu\\.nextreports-7.0-SNAPSHOT\\jssecacerts";
 		System.setProperty("javax.net.ssl.trustStore", file);
 		String pass = "next";
-		String host = "192.168.16.86";
-		int port = 8182;
+//		String host = "192.168.16.86";
+//		int port = 8182;
+		String host = "jlab.intranet.asf.ro";
+		int port = 7236;
 		System.out.println("Loading KeyStore " + file + "...");
 		InputStream in = new FileInputStream(file);
 		KeyStore ks = KeyStore.getInstance(KeyStore.getDefaultType());
 		ks.load(in, pass.toCharArray());
 		in.close();
 		
-		SSLContext context = SSLContext.getInstance("TLS");
+		SSLContext context = SSLContext.getInstance("SSL");
 		TrustManagerFactory tmf = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
 		tmf.init(ks);
+		System.out.println("**** managers="+tmf.getTrustManagers().length);
 		X509TrustManager defaultTrustManager = (X509TrustManager)tmf.getTrustManagers()[0];
 		SavingTrustManager tm = new SavingTrustManager(defaultTrustManager);
 		context.init(null, new TrustManager[] {tm}, null);
@@ -93,7 +97,7 @@ public class Test {
 		out.close();
 		
 		// test 
-		URL url = new URL("https://" + host + ":" + port +"/nextserver");
+		URL url = new URL("https://" + host + ":" + port +"/nextreports-server");
 		HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
 		connection.setHostnameVerifier(new NullHostnameVerifier());
 
