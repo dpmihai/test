@@ -1,0 +1,8 @@
+<xstream.Person>
+  <name>Ion</name>
+  <address>BDIon</address>
+  <properties>
+    <property name="separator" value=","/>
+    <property name="fileExtension" value=".csv"/>
+  </properties>
+</xstream.Person>
