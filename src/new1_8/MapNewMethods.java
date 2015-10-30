@@ -40,16 +40,22 @@ public class MapNewMethods {
 	
 	public static void main(String[] args) {
 		Stream<Person> people = Stream.of(new Person("Andy", 25), new Person("Paul", 30), new Person("Mary", 27), new Person("Paul", 5));
-		Map<String, List<Person>> byNameMap = new HashMap<>();		
-		for(Person person: people.collect(Collectors.toList())) {
-		    byNameMap.computeIfAbsent(person.getName(), name -> new ArrayList<>()).add(person);
-		}
+		Map<String, List<Person>> byNameMap = new HashMap<>();	
+		
+//		for(Person person: people.collect(Collectors.toList())) {
+//		    byNameMap.computeIfAbsent(person.getName(), name -> new ArrayList<>()).add(person);
+//		}
+		
+		byNameMap = people.collect(Collectors.groupingBy(Person::getName));
+		
 		byNameMap.forEach((k, v) -> System.out.println(k + "=" + 
 				v.stream().
 				  sorted((p1, p2) -> Integer.compare(p1.getAge(), p2.getAge())).
 				  //map(p -> p.toString()).
 				  map(p -> String.valueOf(p.getAge())).
-				  collect(Collectors.joining(", ", "[", "]"))));        
+				  collect(Collectors.joining(", ", "[", "]")))); 
+		
+		
 		
 	}
 
