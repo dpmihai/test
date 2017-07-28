@@ -20,8 +20,9 @@ import java.util.stream.Collectors;
  */
 public class PivotTest {
 
-    public static int WIDTH = 9;
-    public static String delimiter = "|";
+    public static int COLUMN_WIDTH = 9;
+    public static String COLUMN_DELIMITER = "|";
+    public static String LINE_DELIMITER = "-";
 
     public static void main(String[] args) {
         try {
@@ -61,7 +62,7 @@ public class PivotTest {
                                     players.stream()
                                            .collect(Collectors.summingLong(Player::getSalary));
                             printTotal(total);
-                            System.out.print(delimiter);
+                            System.out.print(COLUMN_DELIMITER);
                         });
                         printLineDelimiter(columns);
                     });
@@ -72,20 +73,20 @@ public class PivotTest {
 
     private static void printLineDelimiter(int columns) {
         System.out.println();
-        System.out.println(String.join("", Collections.nCopies(columns*(WIDTH+1), "-")));
+        System.out.println(String.join("", Collections.nCopies(columns*(COLUMN_WIDTH +1), LINE_DELIMITER)));
     }
 
     private static void printTeamsHeader(Set<String> teams) {
-        System.out.printf("%" + (WIDTH + 1) + "s", delimiter);
-        teams.stream().forEach(t -> System.out.printf("%" + (WIDTH + 1) + "s", t + delimiter));
+        System.out.printf("%" + (COLUMN_WIDTH + 1) + "s", COLUMN_DELIMITER);
+        teams.stream().forEach(t -> System.out.printf("%" + (COLUMN_WIDTH + 1) + "s", t + COLUMN_DELIMITER));
     }
 
     private static void printYear(int year) {
-        System.out.printf("%" + (WIDTH+1) + "s" , year + delimiter);
+        System.out.printf("%" + (COLUMN_WIDTH +1) + "s" , year + COLUMN_DELIMITER);
     }
 
     private static void printTotal(long total) {
-        System.out.printf("%" + WIDTH + "s", total);
+        System.out.printf("%" + COLUMN_WIDTH + "s", total);
     }
 
 }
