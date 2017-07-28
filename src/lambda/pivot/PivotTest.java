@@ -17,7 +17,9 @@ import java.util.stream.Collectors;
  *   ----------------------------------------
  *
  * Created by Mihai Dinca-Panaitescu on 12.04.2017.
+ *
  */
+
 public class PivotTest {
 
     public static int COLUMN_WIDTH = 9;
